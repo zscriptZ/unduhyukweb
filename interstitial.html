@@ -12,8 +12,9 @@
         <p>Anda akan diarahkan ke halaman tujuan dalam <span id="timer">5</span> detik.</p>
     </div>
     <script>
+        // Ambil URL terenkripsi dari parameter
         const urlParams = new URLSearchParams(window.location.search);
-        const destination = atob(urlParams.get('url')); // Decode URL
+        const destination = atob(decodeURIComponent(urlParams.get('url'))); // Decode URL
 
         let timer = 5;
         const countdown = setInterval(() => {
@@ -21,7 +22,7 @@
             document.getElementById('timer').innerText = timer;
             if (timer === 0) {
                 clearInterval(countdown);
-                window.location.href = destination; // Redirect to original URL
+                window.location.href = destination; // Redirect ke URL tujuan
             }
         }, 1000);
     </script>
