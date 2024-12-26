@@ -3,7 +3,7 @@ document.getElementById('safelinkForm').addEventListener('submit', function (e) 
     const url = document.getElementById('url').value;
 
     // Encode URL
-    const encodedUrl = btoa(url); // Base64 encoding
+    const encodedUrl = encodeURIComponent(btoa(url)); // Base64 encoding + encodeURIComponent
 
     // Generate Safelink
     const safelink = `${window.location.origin}/interstitial.html?url=${encodedUrl}`;
