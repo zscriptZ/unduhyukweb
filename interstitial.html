@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mohon Tunggu...</h1>
+        <p>Anda akan diarahkan ke halaman tujuan dalam <span id="timer">5</span> detik.</p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const destination = atob(urlParams.get('url')); // Decode URL
+
+        let timer = 5;
+        const countdown = setInterval(() => {
+            timer--;
+            document.getElementById('timer').innerText = timer;
+            if (timer === 0) {
+                clearInterval(countdown);
+                window.location.href = destination; // Redirect to original URL
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
